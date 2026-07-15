@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Support — ActionCam Live Controller</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+      line-height: 1.7;
+      color: #1a1a1a;
+      background: #fafafa;
+      padding: 1rem;
+    }
+    .container {
+      max-width: 720px;
+      margin: 2rem auto;
+      background: #fff;
+      padding: 2rem 1.5rem;
+      border-radius: 8px;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+    }
+    h1 { font-size: 1.6rem; margin-bottom: 0.25rem; }
+    h2 { font-size: 1.2rem; margin-top: 2rem; margin-bottom: 0.75rem; }
+    h3 { font-size: 1.05rem; margin-top: 1.5rem; margin-bottom: 0.5rem; }
+    p, li { margin-bottom: 0.75rem; }
+    ul, ol { padding-left: 1.5rem; margin-bottom: 1rem; }
+    .meta {
+      font-size: 0.9rem;
+      color: #666;
+      margin-bottom: 1.5rem;
+    }
+    strong { font-weight: 600; }
+    hr { border: none; border-top: 1px solid #e0e0e0; margin: 1.5rem 0; }
+    code {
+      background: #f0f0f0;
+      padding: 0.15rem 0.35rem;
+      border-radius: 3px;
+      font-size: 0.85rem;
+      word-break: break-all;
+    }
+    .contact-box {
+      background: #f0f7ff;
+      border: 1px solid #cce5ff;
+      border-radius: 6px;
+      padding: 1rem;
+      margin: 1.5rem 0;
+    }
+    .contact-box p { margin-bottom: 0; }
+    .presets {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+      margin: 1rem 0;
+    }
+    .preset {
+      flex: 1;
+      min-width: 160px;
+      background: #f9f9f9;
+      border: 1px solid #e0e0e0;
+      border-radius: 6px;
+      padding: 0.75rem;
+      text-align: center;
+    }
+    .preset .label { font-size: 0.8rem; color: #666; text-transform: uppercase; letter-spacing: 0.05em; }
+    .preset .value { font-size: 1.1rem; font-weight: 600; margin: 0.25rem 0; }
+    .preset .desc { font-size: 0.85rem; color: #444; }
+    .preset.recommended { border-color: #4caf50; background: #f1f9f0; }
+    .preset.recommended .label { color: #2e7d32; }
+    .safety { background: #fff8e1; border: 1px solid #ffe082; border-radius: 6px; padding: 1rem; margin: 1.5rem 0; }
+    .safety h3 { margin-top: 0; color: #e65100; }
+    @media (max-width: 500px) {
+      .container { padding: 1rem; margin: 1rem auto; }
+      .presets { flex-direction: column; }
+    }
+  </style>
+</head>
+<body>
+<div class="container">
+
+<h1>ActionCam Live Controller</h1>
+<p class="meta">Support &middot; Version 0.1.0-alpha1</p>
+
+<hr>
+
+<h2>Contact</h2>
+<div class="contact-box">
+  <p><strong>Support email:</strong> <a href="mailto:ajoobeyt@gmail.com">ajoobeyt@gmail.com</a></p>
+</div>
+
+<hr>
+
+<h2>About the App</h2>
+<p>ActionCam Live Controller is a remote control tool for compatible action cameras. It connects to your camera via Bluetooth, sets up Wi-Fi, and instructs the camera to start a live RTMP stream to a destination you choose.</p>
+<p><strong>The app does not capture or transmit video.</strong> Your camera streams directly to your RTMP destination over Wi-Fi. The app sends only control commands to the camera.</p>
+<p>Currently tested with <strong>DJI Osmo Action 4</strong> (Direct Mode).</p>
+
+<hr>
+
+<h2>Basic Troubleshooting</h2>
+
+<h3>Permissions</h3>
+<ul>
+  <li>The app shows a permission card on first launch. Tap <strong>"Grant Required Permissions"</strong> and allow each prompt.</li>
+  <li>Required permissions: Bluetooth (camera discovery and connection), Location (required by Android for Wi-Fi scanning — the app does not track your location), Wi-Fi state, Internet.</li>
+  <li>If permissions are denied, the permission card will remain until all required permissions are granted.</li>
+</ul>
+
+<h3>Camera Connection</h3>
+<ul>
+  <li>Ensure your camera is powered on and within Bluetooth range (~10 metres).</li>
+  <li>Tap <strong>"Find Camera"</strong> on the Stream Control screen.</li>
+  <li>Select your camera from the list. Status should change to <strong>"Connected"</strong>.</li>
+  <li>If the camera does not appear, ensure it is not already connected to another device via the DJI Mimo app.</li>
+</ul>
+
+<h3>Wi-Fi Selection</h3>
+<ul>
+  <li>Tap the Wi-Fi row on the Stream Control screen.</li>
+  <li>Select your Wi-Fi network from the scan results or choose a saved network.</li>
+  <li>If using your phone's mobile hotspot, select the hotspot SSID.</li>
+  <li>Enter the Wi-Fi password if prompted. Passwords are stored using encrypted storage.</li>
+</ul>
+
+<h3>RTMP Destination Setup</h3>
+<ul>
+  <li>Tap the destination row, then <strong>"Add Destination"</strong>.</li>
+  <li>Enter a <strong>Name</strong> (a label you will recognise), a <strong>Server URL</strong> from your streaming service, and a <strong>Stream Key</strong> from your streaming service.</li>
+  <li>The stream key is masked by default for privacy. Tap the eye icon to verify what you entered.</li>
+  <li>Stream keys are redacted in normal display and logs where practical.</li>
+</ul>
+
+<h3>Recommended Quality Presets</h3>
+<div class="presets">
+  <div class="preset recommended">
+    <div class="label">Recommended IRL / Mobile</div>
+    <div class="value">720p30 3500</div>
+    <div class="desc">Balanced quality and stability</div>
+  </div>
+  <div class="preset">
+    <div class="label">High Quality (Stationary)</div>
+    <div class="value">1080p30 4000</div>
+    <div class="desc">Best quality when stable</div>
+  </div>
+  <div class="preset">
+    <div class="label">Safe / Fallback</div>
+    <div class="value">720p30 2500</div>
+    <div class="desc">Lower bandwidth, reliable</div>
+  </div>
+</div>
+
+<h3>Stream Not Starting?</h3>
+<ul>
+  <li>Ensure the camera is connected.</li>
+  <li>Ensure Wi-Fi is configured and the camera has joined the network.</li>
+  <li>Ensure a destination is selected (name + server URL + stream key).</li>
+  <li>Ensure a quality preset is selected.</li>
+  <li>Check your streaming service dashboard to confirm the stream is visible.</li>
+</ul>
+
+<hr>
+
+<div class="safety">
+<h3>Safety Notes</h3>
+<ul>
+  <li><strong>Do not operate the app while driving.</strong> If testing in a vehicle, have a passenger handle the device.</li>
+  <li><strong>Do not share your stream key.</strong> Anyone with your stream key can stream to your channel. Redact or blur stream keys in any screenshots or recordings you share.</li>
+  <li>Check your streaming platform's terms of service to ensure third-party streaming tools are permitted.</li>
+</ul>
+</div>
+
+<hr>
+
+<h2>Known Limitations</h2>
+<ul>
+  <li>Only tested with <strong>DJI Osmo Action 4</strong>. Other cameras may not be compatible.</li>
+  <li><strong>Relay Mode</strong> is not available in the current release (experimental, future feature).</li>
+  <li><strong>No in-app purchases or donations</strong> (Play Billing not implemented).</li>
+  <li>Hotspot / mobile data streaming is in testing and may have limitations.</li>
+</ul>
+
+<hr>
+
+<p style="font-size:0.85rem; color:#888;">
+  <a href="../privacy/index.html">Privacy Policy</a> &middot;
+  Not affiliated with DJI, Osmo, Streamrun, Twitch, YouTube, Kick, or any other camera or streaming service provider.
+</p>
+
+</div>
+</body>
+</html>

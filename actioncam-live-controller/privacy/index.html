@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Privacy Policy — ActionCam Live Controller</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+      line-height: 1.7;
+      color: #1a1a1a;
+      background: #fafafa;
+      padding: 1rem;
+    }
+    .container {
+      max-width: 720px;
+      margin: 2rem auto;
+      background: #fff;
+      padding: 2rem 1.5rem;
+      border-radius: 8px;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+    }
+    h1 { font-size: 1.6rem; margin-bottom: 0.25rem; }
+    h2 { font-size: 1.2rem; margin-top: 2rem; margin-bottom: 0.75rem; }
+    h3 { font-size: 1.05rem; margin-top: 1.5rem; margin-bottom: 0.5rem; }
+    p, li { margin-bottom: 0.75rem; }
+    ul, ol { padding-left: 1.5rem; margin-bottom: 1rem; }
+    .meta {
+      font-size: 0.9rem;
+      color: #666;
+      margin-bottom: 1.5rem;
+    }
+    strong { font-weight: 600; }
+    hr { border: none; border-top: 1px solid #e0e0e0; margin: 1.5rem 0; }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-bottom: 1rem;
+      font-size: 0.9rem;
+    }
+    th, td {
+      border: 1px solid #ddd;
+      padding: 0.5rem;
+      text-align: left;
+      vertical-align: top;
+    }
+    th { background: #f5f5f5; font-weight: 600; }
+    code {
+      background: #f0f0f0;
+      padding: 0.15rem 0.35rem;
+      border-radius: 3px;
+      font-size: 0.85rem;
+      word-break: break-all;
+    }
+    @media (max-width: 500px) {
+      .container { padding: 1rem; margin: 1rem auto; }
+      th, td { padding: 0.35rem; }
+    }
+  </style>
+</head>
+<body>
+<div class="container">
+
+<h1>Privacy Policy</h1>
+<p class="meta">ActionCam Live Controller &middot; Last updated: July 15, 2026</p>
+<p class="meta">Package: <code>com.ajoobe.actioncamlivecontroller</code></p>
+
+<hr>
+
+<h2>1. Introduction</h2>
+<p>This privacy policy describes how <strong>ActionCam Live Controller</strong> (&ldquo;the App&rdquo;) handles user data. The App is a remote control tool for compatible action cameras that enables live video streaming to RTMP-compatible destinations.</p>
+<p><strong>The developer does not currently operate a backend server, cloud service, or analytics platform for this App.</strong> All user data described in this document is stored locally on the user's device unless otherwise stated.</p>
+<p>The App is developed by an individual developer and is <strong>not affiliated with DJI, Osmo, Streamrun, Twitch, YouTube, Kick, or any other camera or streaming service provider.</strong></p>
+
+<hr>
+
+<h2>2. What the App Does</h2>
+<p>The App connects to a compatible action camera (currently tested with DJI Osmo Action 4) via Bluetooth Low Energy (BLE) to configure the camera's Wi-Fi connection and instruct the camera to begin streaming video to an RTMP destination specified by the user.</p>
+<p>The App itself <strong>does not</strong> capture, process, or transmit video or audio. The streaming video is transmitted directly from the camera to the RTMP destination over Wi-Fi; the App sends only control commands to the camera.</p>
+
+<hr>
+
+<h2>3. Data Handling</h2>
+
+<h3>3.1 Data Stored Locally on Device</h3>
+<p>The following data is stored exclusively on the user's device. <strong>None of this data is sent to the developer or to any third party by the App:</strong></p>
+
+<table>
+  <thead>
+    <tr><th>Data</th><th>Purpose</th><th>Storage Method</th></tr>
+  </thead>
+  <tbody>
+    <tr><td>Wi-Fi network name (SSID)</td><td>Identify which Wi-Fi network the camera should connect to</td><td>Plain text in app preferences</td></tr>
+    <tr><td>Wi-Fi password</td><td>Authenticate the camera's Wi-Fi connection</td><td><strong>Encrypted</strong> using Android EncryptedSharedPreferences</td></tr>
+    <tr><td>RTMP destination name</td><td>User-defined label for each stream destination</td><td>Plain text in app preferences</td></tr>
+    <tr><td>RTMP server URL</td><td>The URL of the user's chosen RTMP streaming service</td><td>Plain text in app preferences</td></tr>
+    <tr><td>RTMP stream key</td><td>Authentication credential for the RTMP streaming service</td><td>Plain text in app preferences; <strong>masked in UI by default</strong> and redacted in normal display and logs where practical</td></tr>
+    <tr><td>App settings</td><td>User preferences such as video resolution/bitrate presets, technical mode flag</td><td>App preferences</td></tr>
+    <tr><td>Recent logs and events</td><td>Troubleshooting and debugging information</td><td>In-memory only; cleared on app restart or manually by user</td></tr>
+  </tbody>
+</table>
+
+<h3>3.2 Data Passed to the User's Camera (via BLE)</h3>
+<p>The App sends control commands to the user's camera over Bluetooth Low Energy. This data does not leave the local Bluetooth connection between the phone and the camera:</p>
+
+<table>
+  <thead>
+    <tr><th>Data</th><th>Destination</th><th>Circumstance</th></tr>
+  </thead>
+  <tbody>
+    <tr><td>Wi-Fi configuration (SSID, password)</td><td>User's camera via BLE</td><td>User sets up camera Wi-Fi</td></tr>
+    <tr><td>RTMP destination info (server URL, stream key)</td><td>User's camera via BLE</td><td>User starts a live stream</td></tr>
+    <tr><td>Stream control commands (start, stop, preset)</td><td>User's camera via BLE</td><td>User starts or stops streaming</td></tr>
+  </tbody>
+</table>
+
+<p>The camera then uses the provided RTMP destination info to connect directly to the user's chosen RTMP streaming service. <strong>The App is not involved in the video/audio transmission between the camera and the RTMP service.</strong></p>
+
+<h3>3.3 Data Not Collected by the Developer</h3>
+<ul>
+  <li><strong>No personal information</strong> (name, email, phone number, address) is collected or requested.</li>
+  <li><strong>No location data</strong> is collected, stored, or transmitted for tracking purposes. (Android requires Location permission for Wi-Fi scanning; see Section 5. The App does not read, store, or transmit the device's location.)</li>
+  <li><strong>No advertising ID</strong> or similar device identifiers are accessed by the App.</li>
+  <li><strong>No account registration</strong> is required.</li>
+  <li><strong>No data</strong> is uploaded to any server operated by the developer.</li>
+  <li><strong>No analytics, crash reports, telemetry, or usage statistics</strong> are collected or transmitted by the App.</li>
+  <li><strong>No cloud sync</strong> is used. All data remains on the device only.</li>
+</ul>
+
+<hr>
+
+<h2>4. Third-Party Services</h2>
+
+<table>
+  <thead>
+    <tr><th>Service</th><th>Purpose</th><th>App's Role</th></tr>
+  </thead>
+  <tbody>
+    <tr><td>User's chosen RTMP streaming service (e.g., Streamrun, Twitch, YouTube, Kick)</td><td>The camera streams live video/audio to this service</td><td>The App passes the server URL and stream key to the camera via BLE so the camera knows where to stream. <strong>The App does not send data directly to the RTMP service.</strong></td></tr>
+  </tbody>
+</table>
+
+<p>The App <strong>does not</strong> send data to any third-party service that the user has not intentionally configured as a stream destination.</p>
+<p>The App currently <strong>has no analytics SDK, crash reporting SDK, advertising SDK, or any other third-party tracking library.</strong></p>
+
+<hr>
+
+<h2>5. Permissions</h2>
+
+<table>
+  <thead>
+    <tr><th>Permission</th><th>Why It Is Used</th></tr>
+  </thead>
+  <tbody>
+    <tr><td><code>BLUETOOTH_CONNECT</code></td><td>Connect to the camera via Bluetooth for sending control commands</td></tr>
+    <tr><td><code>BLUETOOTH_SCAN</code></td><td>Discover nearby Bluetooth Low Energy devices (cameras)</td></tr>
+    <tr><td><code>ACCESS_FINE_LOCATION</code></td><td>Required by the Android platform for Wi-Fi scanning. <strong>The App does not use location for any other purpose.</strong></td></tr>
+    <tr><td><code>INTERNET</code></td><td>Required for network state checks and to allow the camera's stream to reach the user's configured RTMP destination</td></tr>
+    <tr><td><code>ACCESS_NETWORK_STATE</code></td><td>Check network connectivity status</td></tr>
+    <tr><td><code>ACCESS_WIFI_STATE</code></td><td>Read Wi-Fi network state for camera Wi-Fi configuration</td></tr>
+    <tr><td><code>CHANGE_WIFI_STATE</code></td><td>Instruct the camera to connect to a specified Wi-Fi network</td></tr>
+    <tr><td><code>NEARBY_WIFI_DEVICES</code> (API 33+)</td><td>Discover Wi-Fi Direct capable cameras if applicable</td></tr>
+  </tbody>
+</table>
+
+<p>The App requests these permissions at runtime via a startup permission card. Permissions are not used for any purpose beyond those described above.</p>
+
+<hr>
+
+<h2>6. Data Security</h2>
+
+<table>
+  <thead>
+    <tr><th>Measure</th><th>Details</th></tr>
+  </thead>
+  <tbody>
+    <tr><td>Wi-Fi password encryption</td><td>Wi-Fi passwords are encrypted at rest using Android's EncryptedSharedPreferences (AES-256 GCM).</td></tr>
+    <tr><td>Stream key masking</td><td>Stream keys are masked (hidden) in the UI by default. Users can toggle visibility to verify entry. Stream keys are redacted from normal display and logs where practical.</td></tr>
+    <tr><td>Local storage only</td><td>All app data resides on the device. No data is synced to any cloud or remote server by the App.</td></tr>
+    <tr><td>No analytics / no tracking</td><td>The App does not currently include any analytics, crash reporting, or telemetry SDK. No data is sent to the developer.</td></tr>
+  </tbody>
+</table>
+
+<hr>
+
+<h2>7. User Control</h2>
+<p>Users can manage their data as follows:</p>
+<ul>
+  <li><strong>Delete saved Wi-Fi networks:</strong> Remove individual Wi-Fi profiles from the Settings screen.</li>
+  <li><strong>Delete saved RTMP destinations:</strong> Remove individual stream destinations from the Settings screen.</li>
+  <li><strong>Clear all app data:</strong> Use Android's "Clear storage" option in System Settings &rarr; Apps &rarr; ActionCam Live Controller &rarr; Storage. This removes all locally stored data.</li>
+  <li><strong>Uninstall the App:</strong> Removes all locally stored data.</li>
+  <li><strong>Revoke permissions:</strong> Use Android's App Permissions settings.</li>
+</ul>
+
+<hr>
+
+<h2>8. Data Retention</h2>
+<p>Data remains on the device until the user deletes it via the methods described in Section 7 or uninstalls the App.</p>
+
+<hr>
+
+<h2>9. Children's Privacy</h2>
+<p>The App is not directed at children under the age of 13. No data is knowingly collected from children.</p>
+
+<hr>
+
+<h2>10. Changes to This Privacy Policy</h2>
+<p>This policy may be updated as the App's functionality evolves. Users will be notified of material changes through the App's About screen or via the Play Store listing.</p>
+
+<hr>
+
+<h2>11. Contact</h2>
+<p>For questions about this privacy policy or the App's data practices, please contact the developer at <a href="mailto:ajoobeyt@gmail.com">ajoobeyt@gmail.com</a>.</p>
+
+<hr>
+
+<h2>12. Disclaimer</h2>
+<ul>
+  <li>This App is <strong>not affiliated with DJI, Osmo, Streamrun, Twitch, YouTube, Kick, or any other camera manufacturer or streaming service provider.</strong></li>
+  <li>All trademarks are the property of their respective owners.</li>
+  <li>The user is solely responsible for ensuring they have the right to stream content to their chosen destination and for complying with the terms of service of their RTMP streaming provider.</li>
+</ul>
+
+</div>
+</body>
+</html>
